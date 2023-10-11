@@ -14,11 +14,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Throw an error here!
-  setTimeout(() => {
-    throw new Error("Whoops");
-  }, 2000);
-
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>

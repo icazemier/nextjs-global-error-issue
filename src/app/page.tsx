@@ -1,7 +1,20 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import Image from "next/image";
+import styles from "./page.module.css";
+import { useEffect } from "react";
 
 export default function Home() {
+  // Throw an error here!
+
+  const onLogoClick = async () => {
+    setTimeout(() => {
+      // This error is not catched by our ErrorCatchProvider
+      throw new Error("Whoops");
+    }, 2000);
+  };
+
+  useEffect(() => {}, []);
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -10,21 +23,16 @@ export default function Home() {
           <code className={styles.code}>src/app/page.tsx</code>
         </p>
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+          By{" "}
+          <Image
+            src="/vercel.svg"
+            alt="Vercel Logo"
+            className={styles.vercelLogo}
+            width={100}
+            height={24}
+            priority
+            onClick={onLogoClick}
+          />
         </div>
       </div>
 
@@ -91,5 +99,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
